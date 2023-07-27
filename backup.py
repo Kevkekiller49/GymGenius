@@ -57,42 +57,26 @@ def start():
         main_page.configure(bg="#F1EFE7")
         
         def push():
-            push_button.place_forget()
-            push2_label.place_forget()
-            pull_button.place_forget()
-            pull2_label.place_forget()
-            legs_button.place_forget()
-            legs2_label.place_forget()
-            choice_label.place_forget()
+            main_page.withdraw()
+                
+            push_page = tk.Toplevel(root)
+            push_page.geometry("500x500")
+            push_page.configure(bg="#F1EFE7")
             
+            def back():
+                push_page.destroy()
+                main()
             
-            
-            def restore():
-                back_button.place_forget()
-                start_button.place_forget()
-                gif_label.place_forget()
-                benchlogo_label.place_forget()
-                benchinfo_label.place_forget()
-                inclineinfo_label.place_forget()
-                inclinelogo_label.place_forget()
-                next_button.place_forget()
-                push_button.place(relx=0.05, rely=0.05, anchor=tk.NW)
-                push2_label.place(relx=0.05, rely=0.2, anchor=tk.W)
-                pull_button.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
-                pull2_label.place(relx=0.5, rely=0.195, anchor=tk.CENTER)
-                legs_button.place(relx=0.95, rely=0.04, anchor=tk.NE)
-                legs2_label.place(relx=0.95, rely=0.215, anchor=tk.E)
-                choice_label.place(relx=0.5, rely=0.6, anchor=tk.CENTER)
-        
             #Load and resize the back image
             back_image = Image.open("images/buttons/back.png")
             back_image = back_image.resize((30,30))
             back_photo = ImageTk.PhotoImage(back_image)
     
-            back_button = tk.Button(main_page, image=back_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=restore)
+            back_button = tk.Button(push_page, image=back_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=back)
             back_button.image = back_photo
             back_button.place(relx=0.05, rely=0.1, anchor=tk.SW)
             
+
             # Load and process the animated GIF
             file = "images/gifs/bench.gif"
             frames = Image.open(file)  # Opens the "gymgenius.gif" file using the PIL library
@@ -124,14 +108,14 @@ def start():
                     root.after(50, lambda: main_animation(count))  # Schedule the next frame update after 50 milliseconds
 
             # Creates a label widget to display the animated GIF
-            gif_label = tk.Label(main_page, image="")
+            gif_label = tk.Label(push_page, image="")
             gif_label.place(relx=0.25, rely=0.38, anchor=tk.CENTER)
 
             start_image = Image.open("images/buttons/button.png")
             start_image = start_image.resize((200, 50))
             start_photo = ImageTk.PhotoImage(start_image)
 
-            start_button = tk.Button(main_page, image=start_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: main_animation(0))
+            start_button = tk.Button(push_page, image=start_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: main_animation(0))
             start_button.image = start_photo
             start_button.place(relx=0.25, rely=0.7, anchor=tk.S)
             
@@ -141,7 +125,7 @@ def start():
             benchlogo_image = benchlogo_image.resize((200, 50))
             benchlogo_photo = ImageTk.PhotoImage(benchlogo_image)
 
-            benchlogo_label = tk.Label(main_page, image=benchlogo_photo, bg="#F1EFE7")
+            benchlogo_label = tk.Label(push_page, image=benchlogo_photo, bg="#F1EFE7")
             benchlogo_label.image = benchlogo_photo
             benchlogo_label.place(relx=0.5, rely=0.08, anchor=tk.CENTER)
             
@@ -149,7 +133,7 @@ def start():
             benchinfo_image = benchinfo_image.resize((250, 260))
             benchinfo_photo = ImageTk.PhotoImage(benchinfo_image)
             
-            benchinfo_label = tk.Label(main_page, image=benchinfo_photo, bg="#F1EFE7")
+            benchinfo_label = tk.Label(push_page, image=benchinfo_photo, bg="#F1EFE7")
             benchinfo_label.image = benchinfo_photo
             benchinfo_label.place(relx=1, rely=0.5, anchor=tk.E)
         
@@ -159,7 +143,7 @@ def start():
             inclinelogo_image = inclinelogo_image.resize((250, 60))
             inclinelogo_photo = ImageTk.PhotoImage(inclinelogo_image)
 
-            inclinelogo_label = tk.Label(main_page, image=inclinelogo_photo, bg="#F1EFE7")
+            inclinelogo_label = tk.Label(push_page, image=inclinelogo_photo, bg="#F1EFE7")
             inclinelogo_label.image = inclinelogo_photo
             
             
@@ -167,7 +151,7 @@ def start():
             inclineinfo_image = inclineinfo_image.resize((250, 260))
             inclineinfo_photo = ImageTk.PhotoImage(inclineinfo_image)
             
-            inclineinfo_label = tk.Label(main_page, image=inclineinfo_photo, bg="#F1EFE7")
+            inclineinfo_label = tk.Label(push_page, image=inclineinfo_photo, bg="#F1EFE7")
             inclineinfo_label.image = inclineinfo_photo
             
             
@@ -205,7 +189,7 @@ def start():
             next_photo = ImageTk.PhotoImage(next_image)
 
             #Creates a button widget
-            next_button = tk.Button(main_page, image=next_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=show_next_label)
+            next_button = tk.Button(push_page, image=next_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=show_next_label)
             next_button.image = next_photo
             next_button.place(relx=0.95, rely=0.95, anchor=tk.SE)  
                 

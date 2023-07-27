@@ -40,6 +40,11 @@ photo1 = ImageTk.PhotoImage(image1)  # Creates a PhotoImage object from the resi
 image_button1 = tk.Button(root, image=photo1, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: (root.after(1300, start), hide_start(), animation(0)))
 image_button1.pack(pady=(100, 50))
 
+# Define the replay flag and count variables
+replay = False
+count = 0
+
+
 def start():
     root.withdraw()  # Hides the main window ("root")
 
@@ -50,6 +55,7 @@ def start():
     
     def main():
         intro_page.withdraw()  # Hides the main window ("root")
+        
             
         # Create a new top-level window for the main page
         main_page = tk.Toplevel(root)
@@ -107,6 +113,33 @@ def start():
                 if count < len(image_frame_list_resized):  # Check if there are more frames to display
                     root.after(50, lambda: main_animation(count))  # Schedule the next frame update after 50 milliseconds
 
+
+    
+
+            # Function to handle the "Next" button click event
+            def next_button_click():
+                global count, replay
+
+                # If replay is True, reset the count and replay flag to False
+                if replay:
+                    count = 0
+                    replay = False
+
+                # Check if there are more frames to display
+                if count < len(image_frame_list_resized):
+                    im = image_frame_list_resized[count]
+                    gif_label.configure(image=im)  # Updates the image displayed in the label "gif_label"
+                    count += 1
+
+                    if count == len(image_frame_list_resized):
+                        # If the last frame is reached, set replay flag to True
+                        replay = True
+                        count = 0
+                    else:
+                        # Schedule the next frame update after 50 milliseconds
+                        root.after(50, next_button_click)
+            
+
             # Creates a label widget to display the animated GIF
             gif_label = tk.Label(push_page, image="")
             gif_label.place(relx=0.25, rely=0.38, anchor=tk.CENTER)
@@ -118,6 +151,13 @@ def start():
             start_button = tk.Button(push_page, image=start_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: main_animation(0))
             start_button.image = start_photo
             start_button.place(relx=0.25, rely=0.7, anchor=tk.S)
+            
+            # Create the "Next" button
+            next_button = tk.Button(push_page, text="Next", command=next_button_click)
+            next_button.place(relx=0.5, rely=0.9, anchor=tk.CENTER)
+
+            # Start the animation on program startup
+            next_button_click()
             
             
             
@@ -182,7 +222,7 @@ def start():
                 next_info.place(relx=1, rely=0.5, anchor=tk.E)
                 
             
-                
+            
             #Load and resize the next image
             next_image = Image.open("images/buttons/next.png")
             next_image = next_image.resize((30, 30))
