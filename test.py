@@ -47,8 +47,89 @@ def start():
     intro_page = tk.Toplevel(root)
     intro_page.geometry("500x500")  # Sets the size of the start page window to 500x500 pixels
     intro_page.configure(bg="#F1EFE7")  # Sets the background color of the start page window
-
+    
+    def main():
+        intro_page.withdraw()  # Hides the main window ("root")
+            
+        # Create a new top-level window for the main page
+        main_page = tk.Toplevel(root)
+        main_page.geometry("500x500")  # Sets the size of the start page window to 500x500 pixels
+        main_page.configure(bg="#F1EFE7")
         
+        #Load and resize the push image
+        push_image = Image.open("images/buttons/push.png")
+        push_image = push_image.resize((100, 50))
+        push_photo = ImageTk.PhotoImage(push_image)
+
+        #Creates a button widget
+        push_button = tk.Button(main_page, image=push_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0)
+        push_button.image = push_photo
+        push_button.place(relx=0.05, rely=0.05, anchor=tk.NW)
+        
+        #Load and resize the push image
+        push2_image = Image.open("images/statements/push2.png")
+        push2_image = push2_image.resize((110, 60))
+        push2_photo = ImageTk.PhotoImage(push2_image)
+
+        #Creates a label widget
+        push2_button = tk.Label(main_page, image=push2_photo, bg="#F1EFE7")
+        push2_button.image = push2_photo
+        push2_button.place(relx=0.05, rely=0.2, anchor=tk.W)
+        
+        #Load and resize the pull image
+        pull_image = Image.open("images/buttons/pull.png")
+        pull_image = pull_image.resize((100, 50))
+        pull_photo = ImageTk.PhotoImage(pull_image)
+
+        #Creates a button widget
+        pull_button = tk.Button(main_page, image=pull_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0)
+        pull_button.image = pull_photo
+        pull_button.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
+        
+        # Load and resize the legs2 image
+        pull2_image = Image.open("images/statements/pull2.png")
+        pull2_image = pull2_image.resize((100, 50))
+        pull2_photo = ImageTk.PhotoImage(pull2_image)
+
+        # Creates an label image
+        pull2_label = tk.Label(main_page, image=pull2_photo, bg="#F1EFE7")
+        pull2_label.image = pull2_photo
+        pull2_label.place(relx=0.5, rely=0.195, anchor=tk.CENTER)
+        
+        #Load and resize the leg image
+        legs_image = Image.open("images/buttons/legs.png")
+        legs_image = legs_image.resize((110, 60))
+        legs_photo = ImageTk.PhotoImage(legs_image)
+
+        #Creates a button widget
+        legs_button = tk.Button(main_page, image=legs_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0)
+        legs_button.image = legs_photo
+        legs_button.place(relx=0.95, rely=0.04, anchor=tk.NE)
+        
+        # Load and resize the legs2 image
+        legs2_image = Image.open("images/statements/legs2.png")
+        legs2_image = legs2_image.resize((120, 70))
+        legs2_photo = ImageTk.PhotoImage(legs2_image)
+
+        # Creates an label image
+        legs2_label = tk.Label(main_page, image=legs2_photo, bg="#F1EFE7")
+        legs2_label.image = legs2_photo
+        legs2_label.place(relx=0.95, rely=0.215, anchor=tk.E)
+        
+        #Load and resize the image
+        choice_image = Image.open("images/statements/choice.png")
+        choice_image = choice_image.resize((450, 100))
+        choice_photo = ImageTk.PhotoImage(choice_image)
+
+        #Creates a label image
+        choice_label = tk.Label(main_page, image=choice_photo, bg="#F1EFE7")
+        choice_label.image = choice_photo
+        choice_label.place(relx=0.5, rely=0.6, anchor=tk.CENTER)
+        
+        
+        
+        
+
     # Load and resize the intro image
     intro_image = Image.open("images/statements/intro.png")
     intro_image = intro_image.resize((300, 30))  # Resizes the image
@@ -176,7 +257,15 @@ def start():
     next_button = tk.Button(intro_page, image=next_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=show_next_label)
     next_button.image = next_photo
     next_button.place(relx=0.95, rely=0.95, anchor=tk.SE)
-
+    
+    #Load and resize the skip image
+    skip_image = Image.open("images/buttons/skip.png")
+    skip_image = skip_image.resize((100, 30))
+    skip_photo = ImageTk.PhotoImage(skip_image)
+    
+    skip_button = tk.Button(intro_page, image=skip_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=main)
+    skip_button.image = skip_photo
+    skip_button.place(relx=0.5, rely=0.95, anchor=tk.S)
 
     #Pack the intro_label initially
     intro_label.pack()
