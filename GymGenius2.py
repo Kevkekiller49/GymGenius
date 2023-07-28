@@ -156,7 +156,7 @@ def start():
                     root.after(50, lambda: main_animation(count))  # Schedule the next frame update after 50 milliseconds
 
             
-            benchlogo_image = Image.open("images/statements/benchlogo.png")
+            benchlogo_image = Image.open("images/statements/push/benchlogo.png")
             benchlogo_image = benchlogo_image.resize((200, 50))
             benchlogo_photo = ImageTk.PhotoImage(benchlogo_image)
 
@@ -164,7 +164,7 @@ def start():
             benchlogo_label.image = benchlogo_photo
             benchlogo_label.place(relx=0.5, rely=0.08, anchor=tk.CENTER)
             
-            benchinfo_image = Image.open("images/statements/benchinfo.png")
+            benchinfo_image = Image.open("images/statements/push/benchinfo.png")
             benchinfo_image = benchinfo_image.resize((250, 260))
             benchinfo_photo = ImageTk.PhotoImage(benchinfo_image)
             
@@ -172,70 +172,70 @@ def start():
             benchinfo_label.image = benchinfo_photo
             benchinfo_label.place(relx=1, rely=0.5, anchor=tk.E)
         
-            inclinelogo_image = Image.open("images/statements/inclinelogo.png")
+            inclinelogo_image = Image.open("images/statements/push/inclinelogo.png")
             inclinelogo_image = inclinelogo_image.resize((250, 60))
             inclinelogo_photo = ImageTk.PhotoImage(inclinelogo_image)
 
             inclinelogo_label = tk.Label(push_page, image=inclinelogo_photo, bg="#F1EFE7")
             inclinelogo_label.image = inclinelogo_photo
             
-            inclineinfo_image = Image.open("images/statements/inclineinfo.png")
+            inclineinfo_image = Image.open("images/statements/push/inclineinfo.png")
             inclineinfo_image = inclineinfo_image.resize((250, 260))
             inclineinfo_photo = ImageTk.PhotoImage(inclineinfo_image)
             
             inclineinfo_label = tk.Label(push_page, image=inclineinfo_photo, bg="#F1EFE7")
             inclineinfo_label.image = inclineinfo_photo
             
-            shoulderpresslogo_image = Image.open("images/statements/shoulderlogo.png")
+            shoulderpresslogo_image = Image.open("images/statements/push/shoulderlogo.png")
             shoulderpresslogo_image = shoulderpresslogo_image.resize((250, 60))
             shoulderpresslogo_photo = ImageTk.PhotoImage(shoulderpresslogo_image)
             
             shoulderpresslogo_label = tk.Label(push_page, image=shoulderpresslogo_photo, bg="#F1EFE7")
             shoulderpresslogo_label.image = shoulderpresslogo_photo
             
-            shoulderpressinfo_image = Image.open("images/statements/shoulderinfo.png")
+            shoulderpressinfo_image = Image.open("images/statements/push/shoulderinfo.png")
             shoulderpressinfo_image = shoulderpressinfo_image.resize((250, 260))
             shoulderpressinfo_photo = ImageTk.PhotoImage(shoulderpressinfo_image)
             
             shoulderpressinfo_label = tk.Label(push_page, image=shoulderpressinfo_photo, bg="#F1EFE7")
             shoulderpressinfo_label.image = shoulderpressinfo_photo
             
-            laterallogo_image = Image.open("images/statements/laterallogo.png")
+            laterallogo_image = Image.open("images/statements/push/laterallogo.png")
             laterallogo_image = laterallogo_image.resize((250, 60))
             laterallogo_photo = ImageTk.PhotoImage(laterallogo_image)
             
             laterallogo_label = tk.Label(push_page, image=laterallogo_photo, bg="#F1EFE7")
             laterallogo_label.image = laterallogo_photo
             
-            lateralinfo_image = Image.open("images/statements/lateralinfo.png")
+            lateralinfo_image = Image.open("images/statements/push/lateralinfo.png")
             lateralinfo_image = lateralinfo_image.resize((250, 260))
             lateralinfo_photo = ImageTk.PhotoImage(lateralinfo_image)
             
             lateralinfo_label = tk.Label(push_page, image=lateralinfo_photo, bg="#F1EFE7")
             lateralinfo_label.image = lateralinfo_photo
             
-            ropetriceplogo_image = Image.open("images/statements/ropetriceplogo.png")
+            ropetriceplogo_image = Image.open("images/statements/push/ropetriceplogo.png")
             ropetriceplogo_image = ropetriceplogo_image.resize((250, 60))
             ropetriceplogo_photo = ImageTk.PhotoImage(ropetriceplogo_image)
             
             ropetriceplogo_label = tk.Label(push_page, image=ropetriceplogo_photo, bg="#F1EFE7")
             ropetriceplogo_label.image = ropetriceplogo_photo
             
-            ropetricepinfo_image = Image.open("images/statements/ropetricepinfo.png")
+            ropetricepinfo_image = Image.open("images/statements/push/ropetricepinfo.png")
             ropetricepinfo_image = ropetricepinfo_image.resize((250, 260))
             ropetricepinfo_photo = ImageTk.PhotoImage(ropetricepinfo_image)
             
             ropetricepinfo_label = tk.Label(push_page, image=ropetricepinfo_photo, bg="#F1EFE7")
             ropetricepinfo_label.image = ropetricepinfo_photo
             
-            tricepoverheadlogo_image = Image.open("images/statements/tricepoverheadlogo.png")
+            tricepoverheadlogo_image = Image.open("images/statements/push/tricepoverheadlogo.png")
             tricepoverheadlogo_image = tricepoverheadlogo_image.resize((250, 60))
             tricepoverheadlogo_photo = ImageTk.PhotoImage(tricepoverheadlogo_image)
             
             tricepoverheadlogo_label = tk.Label(push_page, image=tricepoverheadlogo_photo, bg="#F1EFE7")
             tricepoverheadlogo_label.image = tricepoverheadlogo_photo
             
-            tricepoverheadinfo_image = Image.open("images/statements/tricepoverheadinfo.png")
+            tricepoverheadinfo_image = Image.open("images/statements/push/tricepoverheadinfo.png")
             tricepoverheadinfo_image = tricepoverheadinfo_image.resize((250, 260))
             tricepoverheadinfo_photo = ImageTk.PhotoImage(tricepoverheadinfo_image)
             
@@ -434,7 +434,7 @@ def start():
                     root.after(50, lambda: main_animation(count))  # Schedule the next frame update after 50 milliseconds
 
             
-            latpulldownlogo_image = Image.open("images/statements/latpulldownlogo.png")
+            latpulldownlogo_image = Image.open("images/statements/pull/latpulldownlogo.png")
             latpulldownlogo_image = latpulldownlogo_image.resize((250, 60))
             latpulldownlogo_photo = ImageTk.PhotoImage(latpulldownlogo_image)
             
@@ -442,7 +442,7 @@ def start():
             latpulldownlogo_label.image = latpulldownlogo_photo
             latpulldownlogo_label.place(relx=0.5, rely=0.08, anchor=tk.CENTER)
             
-            latpulldowninfo_image = Image.open("images/statements/latpulldowninfo.png")
+            latpulldowninfo_image = Image.open("images/statements/pull/latpulldowninfo.png")
             latpulldowninfo_image = latpulldowninfo_image.resize((250, 260))
             latpulldowninfo_photo = ImageTk.PhotoImage(latpulldowninfo_image)
             
@@ -451,14 +451,14 @@ def start():
             latpulldowninfo_label.place(relx=1, rely=0.5, anchor=tk.E)
             
             
-            rowlogo_image = Image.open("images/statements/rowlogo.png")
+            rowlogo_image = Image.open("images/statements/pull/rowlogo.png")
             rowlogo_image = rowlogo_image.resize((250, 60))
             rowlogo_photo = ImageTk.PhotoImage(rowlogo_image)
             
             rowlogo_label = tk.Label(pull_page, image=rowlogo_photo, bg="#F1EFE7")
             rowlogo_label.image = rowlogo_photo
         
-            rowinfo_image = Image.open("images/statements/rowinfo.png")
+            rowinfo_image = Image.open("images/statements/pull/rowinfo.png")
             rowinfo_image = rowinfo_image.resize((250, 260))
             rowinfo_photo = ImageTk.PhotoImage(rowinfo_image)
             
@@ -466,14 +466,14 @@ def start():
             rowinfo_label.image = rowinfo_photo
             
             
-            barbelllogo_image = Image.open("images/statements/barbelllogo.png")
+            barbelllogo_image = Image.open("images/statements/pull/barbelllogo.png")
             barbelllogo_image = barbelllogo_image.resize((250, 60))
             barbelllogo_photo = ImageTk.PhotoImage(barbelllogo_image)
             
             barbelllogo_label = tk.Label(pull_page, image=barbelllogo_photo, bg="#F1EFE7")
             barbelllogo_label.image = barbelllogo_photo
         
-            barbellinfo_image = Image.open("images/statements/barbellinfo.png")
+            barbellinfo_image = Image.open("images/statements/pull/barbellinfo.png")
             barbellinfo_image = barbellinfo_image.resize((250, 260))
             barbellinfo_photo = ImageTk.PhotoImage(barbellinfo_image)
             
@@ -481,14 +481,14 @@ def start():
             barbellinfo_label.image = barbellinfo_photo
             
             
-            hammercurllogo_image = Image.open("images/statements/hammercurllogo.png")
+            hammercurllogo_image = Image.open("images/statements/pull/hammercurllogo.png")
             hammercurllogo_image = hammercurllogo_image.resize((250, 60))
             hammercurllogo_photo = ImageTk.PhotoImage(hammercurllogo_image)
             
             hammercurllogo_label = tk.Label(pull_page, image=hammercurllogo_photo, bg="#F1EFE7")
             hammercurllogo_label.image = hammercurllogo_photo
         
-            hammercurlinfo_image = Image.open("images/statements/hammercurlinfo.png")
+            hammercurlinfo_image = Image.open("images/statements/pull/hammercurlinfo.png")
             hammercurlinfo_image = hammercurlinfo_image.resize((250, 260))
             hammercurlinfo_photo = ImageTk.PhotoImage(hammercurlinfo_image)
             
@@ -592,32 +592,243 @@ def start():
             
                 
         def legs():
-            push_button.place_forget()
-            push2_label.place_forget()
-            pull_button.place_forget()
-            pull2_label.place_forget()
-            legs_button.place_forget()
-            legs2_label.place_forget()
-            choice_label.place_forget()
+            global gif_index
+            global image_frame_list_resized
+            main_page.withdraw()
+                
+            legs_page = tk.Toplevel(root)
+            legs_page.geometry("500x500")
+            legs_page.configure(bg="#F1EFE7")
             
-            def restore():
-                back_button.place_forget()
-                push_button.place(relx=0.05, rely=0.05, anchor=tk.NW)
-                push2_label.place(relx=0.05, rely=0.2, anchor=tk.W)
-                pull_button.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
-                pull2_label.place(relx=0.5, rely=0.195, anchor=tk.CENTER)
-                legs_button.place(relx=0.95, rely=0.04, anchor=tk.NE)
-                legs2_label.place(relx=0.95, rely=0.215, anchor=tk.E)
-                choice_label.place(relx=0.5, rely=0.6, anchor=tk.CENTER)
+            def back():
+                legs_page.destroy()
+                main()
                 
             #Load and resize the back image
             back_image = Image.open("images/buttons/back.png")
             back_image = back_image.resize((30,30))
             back_photo = ImageTk.PhotoImage(back_image)
     
-            back_button = tk.Button(main_page, image=back_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=restore)
+            back_button = tk.Button(legs_page, image=back_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=back)
             back_button.image = back_photo
             back_button.place(relx=0.05, rely=0.1, anchor=tk.SW)
+    
+           
+            # Function to load and prepare the GIF frames for animation
+            def load_gif_frames(gif_path):
+                frames = Image.open(gif_path)
+                original_width, original_height = frames.size
+
+                # Define the desired resized width and height
+                desired_width = 200
+                desired_height = 200
+
+                # Calculate the new width and height while maintaining the aspect ratio
+                aspect_ratio = original_width / original_height
+                if original_width > original_height:
+                    new_width = desired_width
+                    new_height = int(desired_width / aspect_ratio)
+                else:
+                    new_height = desired_height
+                    new_width = int(desired_height * aspect_ratio)
+
+                # Resize each frame of the GIF and store them in "image_frame_list_resized"
+                return [ImageTk.PhotoImage(frame.resize((new_width, new_height))) for frame in ImageSequence.Iterator(frames)]
+
+    
+
+            def next_button_click():
+                global gif_index, image_frame_list_resized, count, replay
+
+                if gif_index == len(gif_paths) - 1:
+                    #If gif_index is already at the last GIF, do nothing and return
+                    return
+
+                gif_index += 1# Increment gif_index to display the next GIF
+                gif_path = gif_paths[gif_index]
+
+                #Load and prepare the GIF frames for animation
+                image_frame_list_resized = load_gif_frames(gif_path)
+
+                #Reset the count and replay flag
+                count = 0
+                replay = False
+                
+            def previous_button_click():
+                global gif_index, image_frame_list_resized, count, replay
+
+                if gif_index == 0:
+                    #If gif_index is already at the first GIF, do nothing and return
+                    return
+
+                gif_index -= 1  #Decrement gif_index to display the next GIF
+                gif_path = gif_paths[gif_index]
+
+                #Load and prepare the GIF frames for animation
+                image_frame_list_resized = load_gif_frames(gif_path)
+
+                #Reset the count and replay flag
+                count = 0
+                replay = False
+
+                
+            # Function to animate the resized frames of the GIF
+            def main_animation(count):
+                global image_frame_list_resized
+                im = image_frame_list_resized[count]
+
+                gif_label.configure(image=im)  # Updates the image displayed in the label "gif_label"
+                count += 1
+
+                if count < len(image_frame_list_resized):  # Check if there are more frames to display
+                    root.after(50, lambda: main_animation(count))  # Schedule the next frame update after 50 milliseconds
+
+            
+            hacksquatlogo_image = Image.open("images/statements/legs/hacksquatlogo.png")
+            hacksquatlogo_image = hacksquatlogo_image.resize((250, 60))
+            hacksquatlogo_photo = ImageTk.PhotoImage(hacksquatlogo_image)
+            
+            hacksquatlogo_label = tk.Label(legs_page, image=hacksquatlogo_photo, bg="#F1EFE7")
+            hacksquatlogo_label.image = hacksquatlogo_photo
+            hacksquatlogo_label.place(relx=0.5, rely=0.08, anchor=tk.CENTER)
+        
+            hacksquatinfo_image = Image.open("images/statements/legs/hacksquatinfo.png")
+            hacksquatinfo_image = hacksquatinfo_image.resize((250, 260))
+            hacksquatinfo_photo = ImageTk.PhotoImage(hacksquatinfo_image)
+            
+            hacksquatinfo_label = tk.Label(legs_page, image=hacksquatinfo_photo, bg="#F1EFE7")
+            hacksquatinfo_label.image = hacksquatinfo_photo
+            hacksquatinfo_label.place(relx=1, rely=0.5, anchor=tk.E)
+            
+            
+            legcurllogo_image = Image.open("images/statements/legs/legcurllogo.png")
+            legcurllogo_image = legcurllogo_image.resize((250, 60))
+            legcurllogo_photo = ImageTk.PhotoImage(legcurllogo_image)
+            
+            legcurllogo_label = tk.Label(legs_page, image=legcurllogo_photo, bg="#F1EFE7")
+            legcurllogo_label.image = legcurllogo_photo
+        
+            legcurlinfo_image = Image.open("images/statements/legs/legcurlinfo.png")
+            legcurlinfo_image = legcurlinfo_image.resize((250, 260))
+            legcurlinfo_photo = ImageTk.PhotoImage(legcurlinfo_image)
+            
+            legcurlinfo_label = tk.Label(legs_page, image=legcurlinfo_photo, bg="#F1EFE7")
+            legcurlinfo_label.image = legcurlinfo_photo   
+            
+            
+            calfraiselogo_image = Image.open("images/statements/legs/calfraiselogo.png")
+            calfraiselogo_image = calfraiselogo_image.resize((250, 60))
+            calfraiselogo_photo = ImageTk.PhotoImage(calfraiselogo_image)
+            
+            calfraiselogo_label = tk.Label(legs_page, image=calfraiselogo_photo, bg="#F1EFE7")
+            calfraiselogo_label.image = calfraiselogo_photo
+        
+            calfraiseinfo_image = Image.open("images/statements/legs/calfraiseinfo.png")
+            calfraiseinfo_image = calfraiseinfo_image.resize((250, 260))
+            calfraiseinfo_photo = ImageTk.PhotoImage(calfraiseinfo_image)
+            
+            calfraiseinfo_label = tk.Label(legs_page, image=calfraiseinfo_photo, bg="#F1EFE7")
+            calfraiseinfo_label.image = calfraiseinfo_photo     
+                
+               
+               
+               
+               
+                
+                
+            
+           # Creates a label widget to display the animated GIF
+            gif_label = tk.Label(legs_page, image="")
+            gif_label.place(relx=0.25, rely=0.38, anchor=tk.CENTER)
+
+            # Initialize the gif_index and load the first GIF
+            gif_paths = ["images/gifs/legs/hacksquat.gif", "images/gifs/legs/legcurl.gif", "images/gifs/legs/calfraises.gif"]  # Add more paths as needed
+            gif_index = 0
+            image_frame_list_resized = load_gif_frames(gif_paths[gif_index])
+            
+            
+            # List of labels to be shown in sequence
+            labels_to_show = [hacksquatlogo_label, legcurllogo_label, calfraiselogo_label]  # Add more labels if needed
+            info_to_show= [hacksquatinfo_label, legcurlinfo_label, calfraiseinfo_label]
+            current_label_index = 0  # Index to keep track of the currently displayed label
+            current_info_index = 0
+
+
+            # Function to handle the next button click
+            def show_next_label():
+                nonlocal current_label_index
+                nonlocal current_info_index
+    
+                if current_label_index == len(labels_to_show) - 1:
+                    # If we reached the last label, do nothing and return
+                    return
+
+                current_label = labels_to_show[current_label_index]
+                current_info = info_to_show[current_info_index]
+                current_label.place_forget()  # Hide the previous label
+                current_info.place_forget()
+    
+                current_label_index += 1
+                current_info_index += 1
+    
+                next_label = labels_to_show[current_label_index]  # Get the next label to show
+                next_info = info_to_show[current_info_index]
+                next_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  # Show the next label
+                next_info.place(relx=1, rely=0.5, anchor=tk.E)
+                
+           # Function to handle the previous button click
+            def show_previous_label():
+                nonlocal current_label_index
+                nonlocal current_info_index
+    
+                if current_label_index == 0:
+                    # If we reached the first label, do nothing and return
+                    return
+    
+                current_label = labels_to_show[current_label_index]
+                current_info = info_to_show[current_info_index]
+                current_label.place_forget()  # Hide the current label
+                current_info.place_forget()
+    
+                current_label_index -= 1
+                current_info_index -= 1
+
+                previous_label = labels_to_show[current_label_index]  # Get the previous label to show
+                previous_info = info_to_show[current_info_index]
+                previous_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  # Show the previous label
+                previous_info.place(relx=1, rely=0.5, anchor=tk.E)
+                    
+            #Load and resize the next image
+            next_image = Image.open("images/buttons/next.png")
+            next_image = next_image.resize((30, 30))
+            next_photo = ImageTk.PhotoImage(next_image)
+
+            #Creates a button widget
+            next_button = tk.Button(legs_page, image=next_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: (show_next_label(), next_button_click()))
+            next_button.image = next_photo
+            next_button.place(relx=0.95, rely=0.95, anchor=tk.SE)  
+            
+            start_image = Image.open("images/buttons/button.png")
+            start_image = start_image.resize((200, 50))
+            start_photo = ImageTk.PhotoImage(start_image)
+
+            start_button = tk.Button(legs_page, image=start_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: main_animation(0))
+            start_button.image = start_photo
+            start_button.place(relx=0.25, rely=0.7, anchor=tk.S)
+            
+            #Load and resize the back image
+            back_image = Image.open("images/buttons/back.png")
+            back_image = back_image.resize((30,30))
+            back_photo = ImageTk.PhotoImage(back_image)
+    
+            back_button = tk.Button(legs_page, image=back_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: (previous_button_click(), show_previous_label()))
+            back_button.image = back_photo
+            back_button.place(relx=0.05, rely=0.91, anchor=tk.W)
+           
+           
+           
+            
+        
         
         
         
