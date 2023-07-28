@@ -123,7 +123,7 @@ def start():
     training1_label.image = training1_photo
     
     #Load and resize the image
-    closing_image = Image.open("images/statements/closing.png")
+    closing_image = Image.open("images/statements/closing1.png")
     closing_image = closing_image.resize((400, 400))
     closing_photo = ImageTk.PhotoImage(closing_image)
     
