@@ -40,6 +40,12 @@ photo1 = ImageTk.PhotoImage(image1)  # Creates a PhotoImage object from the resi
 image_button1 = tk.Button(root, image=photo1, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: (root.after(1300, start), hide_start(), animation(0)))
 image_button1.pack(pady=(100, 50))
 
+#Global Variables that are called to by the functions
+image_frame_list_resized = None
+count = 0
+replay = False
+gif_index = 0
+
 def start():
     root.withdraw()  # Hides the main window ("root")
 
@@ -50,6 +56,7 @@ def start():
     
     def main():
         intro_page.withdraw()  # Hides the main window ("root")
+        
             
         # Create a new top-level window for the main page
         main_page = tk.Toplevel(root)
@@ -57,6 +64,8 @@ def start():
         main_page.configure(bg="#F1EFE7")
         
         def push():
+            global gif_index
+            global image_frame_list_resized
             main_page.withdraw()
                 
             push_page = tk.Toplevel(root)
@@ -75,49 +84,94 @@ def start():
             back_button = tk.Button(push_page, image=back_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=back)
             back_button.image = back_photo
             back_button.place(relx=0.05, rely=0.1, anchor=tk.SW)
-            
+    
+           
+            # Function to load and prepare the GIF frames for animation
+            def load_gif_frames(gif_path):
+                frames = Image.open(gif_path)
+                original_width, original_height = frames.size
 
-            # Load and process the animated GIF
-            file = "images/gifs/bench.gif"
-            frames = Image.open(file)  # Opens the "gymgenius.gif" file using the PIL library
-            original_width, original_height = frames.size
+                # Define the desired resized width and height
+                desired_width = 200
+                desired_height = 200
 
-            # Define the desired resized width and height
-            desired_width = 200
-            desired_height = 200
+                # Calculate the new width and height while maintaining the aspect ratio
+                aspect_ratio = original_width / original_height
+                if original_width > original_height:
+                    new_width = desired_width
+                    new_height = int(desired_width / aspect_ratio)
+                else:
+                    new_height = desired_height
+                    new_width = int(desired_height * aspect_ratio)
 
-            # Calculate the new width and height while maintaining the aspect ratio
-            aspect_ratio = original_width / original_height
-            if original_width > original_height:
-                new_width = desired_width
-                new_height = int(desired_width / aspect_ratio)
-            else:
-                new_height = desired_height
-                new_width = int(desired_height * aspect_ratio)
+                # Resize each frame of the GIF and store them in "image_frame_list_resized"
+                return [ImageTk.PhotoImage(frame.resize((new_width, new_height))) for frame in ImageSequence.Iterator(frames)]
 
-            # Resize each frame of the GIF and store them in "image_frame_list_resized"
-            image_frame_list_resized = [ImageTk.PhotoImage(frame.resize((new_width, new_height))) for frame in ImageSequence.Iterator(frames)]
+    
 
+            def next_button_click():
+                global gif_index, image_frame_list_resized, count, replay
+
+                gif_index = (gif_index + 1) % len(gif_paths)  # Increment gif_index and wrap around to 0 if it exceeds the number of GIFs
+                
+                if gif_index == 0:
+                    # If gif_index is 0, it means we have reached the end of the GIFs, so stop the animation
+                    gif_label.configure(image="")  # Clear the image to stop the animation
+                    return
+                
+                gif_path = gif_paths[gif_index]
+                
+                # Load and prepare the GIF frames for animation
+                image_frame_list_resized = load_gif_frames(gif_path)
+
+                # Reset the count and replay flag
+                count = 0
+                replay = False
+                
+            def previous_button_click():
+                global gif_index, image_frame_list_resized, count, replay
+
+                gif_index = (gif_index - 1) % len(gif_paths)  # Decrement gif_index and wrap around to the last GIF if it goes below 0
+
+                if gif_index == len(gif_paths) - 1:
+                    # If gif_index is equal to the last index in the list, it means we have reached the first GIF, so stop the animation
+                    gif_label.configure(image="")  # Clear the image to stop the animation
+                    return
+
+                gif_path = gif_paths[gif_index]
+
+                # Load and prepare the GIF frames for animation
+                image_frame_list_resized = load_gif_frames(gif_path)
+
+                # Reset the count and replay flag
+                count = 0
+                replay = False
+                
             # Function to animate the resized frames of the GIF
             def main_animation(count):
+                global image_frame_list_resized
                 im = image_frame_list_resized[count]
 
                 gif_label.configure(image=im)  # Updates the image displayed in the label "gif_label"
                 count += 1
+
                 if count < len(image_frame_list_resized):  # Check if there are more frames to display
                     root.after(50, lambda: main_animation(count))  # Schedule the next frame update after 50 milliseconds
 
+            
+            
             # Creates a label widget to display the animated GIF
             gif_label = tk.Label(push_page, image="")
             gif_label.place(relx=0.25, rely=0.38, anchor=tk.CENTER)
 
-            start_image = Image.open("images/buttons/button.png")
-            start_image = start_image.resize((200, 50))
-            start_photo = ImageTk.PhotoImage(start_image)
+            # Initialize the gif_index and load the first GIF
+            gif_paths = ["images/gifs/bench.gif", "images/gifs/incline.gif"]  # Add more paths as needed
 
-            start_button = tk.Button(push_page, image=start_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: main_animation(0))
-            start_button.image = start_photo
-            start_button.place(relx=0.25, rely=0.7, anchor=tk.S)
+            gif_index = 0
+            image_frame_list_resized = load_gif_frames(gif_paths[gif_index])
+
+
+
             
             
             
@@ -156,8 +210,8 @@ def start():
             
             
             # List of labels to be shown in sequence
-            labels_to_show = [inclinelogo_label]  # Add more labels if needed
-            info_to_show= [inclineinfo_label]
+            labels_to_show = [benchlogo_label, inclinelogo_label]  # Add more labels if needed
+            info_to_show= [benchinfo_label, inclineinfo_label]
             current_label_index = 0  # Index to keep track of the currently displayed label
             current_info_index = 0
 
@@ -166,32 +220,72 @@ def start():
             def show_next_label():
                 nonlocal current_label_index
                 nonlocal current_info_index
+    
+                if current_label_index == len(labels_to_show) - 1:
+                    # If we reached the last label, do nothing and return
+                    return
+
                 current_label = labels_to_show[current_label_index]
                 current_info = info_to_show[current_info_index]
                 current_label.place_forget()  # Hide the previous label
                 current_info.place_forget()
+    
                 current_label_index += 1
                 current_info_index += 1
-                if current_label_index >= len(labels_to_show):
-                    current_label_index = 0
-                if current_info_index >= len(info_to_show):
-                    current_info_index = 0
+    
                 next_label = labels_to_show[current_label_index]  # Get the next label to show
                 next_info = info_to_show[current_info_index]
                 next_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  # Show the next label
                 next_info.place(relx=1, rely=0.5, anchor=tk.E)
                 
-            
-                
+           # Function to handle the previous button click
+            def show_previous_label():
+                nonlocal current_label_index
+                nonlocal current_info_index
+    
+                if current_label_index == 0:
+                    # If we reached the first label, do nothing and return
+                    return
+    
+                current_label = labels_to_show[current_label_index]
+                current_info = info_to_show[current_info_index]
+                current_label.place_forget()  # Hide the current label
+                current_info.place_forget()
+    
+                current_label_index -= 1
+                current_info_index -= 1
+
+                previous_label = labels_to_show[current_label_index]  # Get the previous label to show
+                previous_info = info_to_show[current_info_index]
+                previous_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  # Show the previous label
+                previous_info.place(relx=1, rely=0.5, anchor=tk.E)
+                    
             #Load and resize the next image
             next_image = Image.open("images/buttons/next.png")
             next_image = next_image.resize((30, 30))
             next_photo = ImageTk.PhotoImage(next_image)
 
             #Creates a button widget
-            next_button = tk.Button(push_page, image=next_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=show_next_label)
+            next_button = tk.Button(push_page, image=next_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: (show_next_label(), next_button_click()))
             next_button.image = next_photo
             next_button.place(relx=0.95, rely=0.95, anchor=tk.SE)  
+            
+            start_image = Image.open("images/buttons/button.png")
+            start_image = start_image.resize((200, 50))
+            start_photo = ImageTk.PhotoImage(start_image)
+
+            start_button = tk.Button(push_page, image=start_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: main_animation(0))
+            start_button.image = start_photo
+            start_button.place(relx=0.25, rely=0.7, anchor=tk.S)
+            
+            #Load and resize the back image
+            back_image = Image.open("images/buttons/back.png")
+            back_image = back_image.resize((30,30))
+            back_photo = ImageTk.PhotoImage(back_image)
+    
+            back_button = tk.Button(push_page, image=back_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: (previous_button_click(), show_previous_label()))
+            back_button.image = back_photo
+            back_button.place(relx=0.05, rely=0.91, anchor=tk.W)
                 
             intro_label.pack()
             

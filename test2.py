@@ -159,22 +159,6 @@ def start():
                     root.after(50, lambda: main_animation(count))  # Schedule the next frame update after 50 milliseconds
 
             
-            
-            # Creates a label widget to display the animated GIF
-            gif_label = tk.Label(push_page, image="")
-            gif_label.place(relx=0.25, rely=0.38, anchor=tk.CENTER)
-
-            # Initialize the gif_index and load the first GIF
-            gif_paths = ["images/gifs/bench.gif", "images/gifs/incline.gif"]  # Add more paths as needed
-
-            gif_index = 0
-            image_frame_list_resized = load_gif_frames(gif_paths[gif_index])
-
-
-
-            
-            
-            
             benchlogo_image = Image.open("images/statements/benchlogo.png")
             benchlogo_image = benchlogo_image.resize((200, 50))
             benchlogo_photo = ImageTk.PhotoImage(benchlogo_image)
@@ -191,8 +175,6 @@ def start():
             benchinfo_label.image = benchinfo_photo
             benchinfo_label.place(relx=1, rely=0.5, anchor=tk.E)
         
-            
-            
             inclinelogo_image = Image.open("images/statements/inclinelogo.png")
             inclinelogo_image = inclinelogo_image.resize((250, 60))
             inclinelogo_photo = ImageTk.PhotoImage(inclinelogo_image)
@@ -207,6 +189,16 @@ def start():
             
             inclineinfo_label = tk.Label(push_page, image=inclineinfo_photo, bg="#F1EFE7")
             inclineinfo_label.image = inclineinfo_photo
+            
+            # Creates a label widget to display the animated GIF
+            gif_label = tk.Label(push_page, image="")
+            gif_label.place(relx=0.25, rely=0.38, anchor=tk.CENTER)
+
+            # Initialize the gif_index and load the first GIF
+            gif_paths = ["images/gifs/bench.gif", "images/gifs/incline.gif"]  # Add more paths as needed
+
+            gif_index = 0
+            image_frame_list_resized = load_gif_frames(gif_paths[gif_index])
             
             
             # List of labels to be shown in sequence
@@ -286,6 +278,7 @@ def start():
             back_button = tk.Button(push_page, image=back_photo, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: (previous_button_click(), show_previous_label()))
             back_button.image = back_photo
             back_button.place(relx=0.05, rely=0.91, anchor=tk.W)
+            
                 
             intro_label.pack()
             
