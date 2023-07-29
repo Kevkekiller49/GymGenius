@@ -1,42 +1,42 @@
-# Importing the necessary modules for the GUI and image handling
+#Importing the necessary modules for the GUI and image handling
 import tkinter as tk
 from PIL import Image, ImageTk, ImageSequence
 
-# Create the main window
+#Create the main window
 root = tk.Tk()
-root.title("GymGenius")  # Sets the window title to "GymGenius"
-root.geometry("500x500")  # Sets the window size to 500x500 pixels
-root.configure(bg="#F1EFE7")  # Sets the window background color to "#F1EFE7"
+root.title("GymGenius")  #Sets the window title to "GymGenius"
+root.geometry("500x500")  #Sets the window size to 500x500 pixels
+root.configure(bg="#F1EFE7")  #Sets the window background color to "#F1EFE7"
 
-# Load and process the animated GIF
+#Load and process the animated GIF
 file = "images/gifs/gymgenius.gif"
-frames = Image.open(file)  # Opens the "gymgenius.gif" file using the PIL library
+frames = Image.open(file)  #Opens the "gymgenius.gif" file
 image_frame_list = [ImageTk.PhotoImage(frame) for frame in ImageSequence.Iterator(frames)]
-# Converts each frame of the GIF into a PhotoImage object and stores them in "image_frame_list"
+#Converts each frame of the GIF into a PhotoImage object and stores them in "image_frame_list"
 
-# Function to animate the frames of the GIF
+#Function to animate the frames of the GIF
 def animation(count):
     im = image_frame_list[count]
 
-    gif_label.configure(image=im)  # Updates the image displayed in the label "gif_label"
+    gif_label.configure(image=im)  #Updates the image displayed in the label "gif_label"
     count += 1
-    if count < len(image_frame_list):  # Check if there are more frames to display
-        root.after(50, lambda: animation(count))  # Schedule the next frame update after 50 milliseconds
+    if count < len(image_frame_list):  #Check if there are more frames to display
+        root.after(50, lambda: animation(count))  #Schedule the next frame update after 50 milliseconds
 
-# Creates a label widget to display the animated GIF
+#Creates a label widget to display the animated GIF
 gif_label = tk.Label(root, image="")
 gif_label.pack()
 
-# Function to hide the start button
+#Function to hide the start button
 def hide_start():
-    image_button1.pack_forget()  # Hides the start button ("image_button1")
+    image_button1.pack_forget()  #Hides the start button ("image_button1")
 
-# Load and resize the first image for the start button
+#Load and resize the first image for the start button
 image1 = Image.open("images/buttons/button.png")
-image1 = image1.resize((300, 100))  # Resizes the image to 300x100 pixels
-photo1 = ImageTk.PhotoImage(image1)  # Creates a PhotoImage object from the resized image
+image1 = image1.resize((300, 100))  #Resizes the image to 300x100 pixels
+photo1 = ImageTk.PhotoImage(image1)  #Creates a PhotoImage object from the resized image
 
-# Creates a button widget for the start button
+#Creates a button widget for the start button
 image_button1 = tk.Button(root, image=photo1, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: (root.after(1300, start), hide_start(), animation(0)))
 image_button1.pack(pady=(100, 50))
 
@@ -47,20 +47,20 @@ replay = False
 gif_index = 0
 
 def start():
-    root.withdraw()  # Hides the main window ("root")
+    root.withdraw()  #Hides the main window ("root")
 
-    # Create a new top-level window for the intro page
+    #Create a new top-level window for the intro page
     intro_page = tk.Toplevel(root)
-    intro_page.geometry("500x500")  # Sets the size of the start page window to 500x500 pixels
-    intro_page.configure(bg="#F1EFE7")  # Sets the background color of the start page window
+    intro_page.geometry("500x500")  #Sets the size of the start page window to 500x500 pixels
+    intro_page.configure(bg="#F1EFE7")  #Sets the background color of the start page window
     
     def main():
-        intro_page.withdraw()  # Hides the main window ("root")
+        intro_page.withdraw()  #Hides the main window ("root")
         
             
-        # Create a new top-level window for the main page
+        #Create a new top-level window for the main page
         main_page = tk.Toplevel(root)
-        main_page.geometry("500x500")  # Sets the size of the start page window to 500x500 pixels
+        main_page.geometry("500x500")  #Sets the size of the start page window to 500x500 pixels
         main_page.configure(bg="#F1EFE7")
         
         def push():
@@ -86,16 +86,16 @@ def start():
             back_button.place(relx=0.05, rely=0.1, anchor=tk.SW)
     
            
-            # Function to load and prepare the GIF frames for animation
+            #Function to load and prepare the GIF frames for animation
             def load_gif_frames(gif_path):
                 frames = Image.open(gif_path)
                 original_width, original_height = frames.size
 
-                # Define the desired resized width and height
+                #Define the desired resized width and height
                 desired_width = 200
                 desired_height = 200
 
-                # Calculate the new width and height while maintaining the aspect ratio
+                #Calculate the new width and height while maintaining the aspect ratio
                 aspect_ratio = original_width / original_height
                 if original_width > original_height:
                     new_width = desired_width
@@ -104,7 +104,7 @@ def start():
                     new_height = desired_height
                     new_width = int(desired_height * aspect_ratio)
 
-                # Resize each frame of the GIF and store them in "image_frame_list_resized"
+                #Resize each frame of the GIF and store them in "image_frame_list_resized"
                 return [ImageTk.PhotoImage(frame.resize((new_width, new_height))) for frame in ImageSequence.Iterator(frames)]
 
     
@@ -116,7 +116,7 @@ def start():
                     #If gif_index is already at the last GIF, do nothing and return
                     return
 
-                gif_index += 1# Increment gif_index to display the next GIF
+                gif_index += 1#Increment gif_index to display the next GIF
                 gif_path = gif_paths[gif_index]
 
                 #Load and prepare the GIF frames for animation
@@ -144,25 +144,25 @@ def start():
                 replay = False
 
                 
-            # Function to animate the resized frames of the GIF
+            #Function to animate the resized frames of the GIF
             def main_animation(count):
                 global image_frame_list_resized
                 im = image_frame_list_resized[count]
 
-                gif_label.configure(image=im)  # Updates the image displayed in the label "gif_label"
+                gif_label.configure(image=im)  #Updates the image displayed in the label "gif_label"
                 count += 1
 
-                if count < len(image_frame_list_resized):  # Check if there are more frames to display
-                    root.after(50, lambda: main_animation(count))  # Schedule the next frame update after 50 milliseconds
+                if count < len(image_frame_list_resized):  #Check if there are more frames to display
+                    root.after(50, lambda: main_animation(count))  #Schedule the next frame update after 50 milliseconds
 
-            
-            benchlogo_image = Image.open("images/statements/push/benchlogo.png")
-            benchlogo_image = benchlogo_image.resize((200, 50))
-            benchlogo_photo = ImageTk.PhotoImage(benchlogo_image)
+            #Creates Buttons and Labels with images
+            benchlogo_image = Image.open("images/statements/push/benchlogo.png") #Opens the image via image directory path
+            benchlogo_image = benchlogo_image.resize((200, 50)) #Resizes the image
+            benchlogo_photo = ImageTk.PhotoImage(benchlogo_image) #Uses Tkinter library to open the image and assign it a variable
 
-            benchlogo_label = tk.Label(push_page, image=benchlogo_photo, bg="#F1EFE7")
+            benchlogo_label = tk.Label(push_page, image=benchlogo_photo, bg="#F1EFE7") #Creates the label, chooses where to display and what image
             benchlogo_label.image = benchlogo_photo
-            benchlogo_label.place(relx=0.5, rely=0.08, anchor=tk.CENTER)
+            benchlogo_label.place(relx=0.5, rely=0.08, anchor=tk.CENTER) #Place the Label correctly
             
             benchinfo_image = Image.open("images/statements/push/benchinfo.png")
             benchinfo_image = benchinfo_image.resize((250, 260))
@@ -244,67 +244,67 @@ def start():
             
             
             
-            # Creates a label widget to display the animated GIF
+            #Creates a label widget to display the animated GIF
             gif_label = tk.Label(push_page, image="")
             gif_label.place(relx=0.25, rely=0.38, anchor=tk.CENTER)
 
-            # Initialize the gif_index and load the first GIF
+            #Initialize the gif_index and load the first GIF
             gif_paths = ["images/gifs/push/bench.gif", "images/gifs/push/incline.gif", 
                          "images/gifs/push/shoulderpress.gif", "images/gifs/push/lateralraise.gif",
-                         "images/gifs/push/ropetricep.gif", "images/gifs/push/overheadtricep.gif"]  # Add more paths as needed
+                         "images/gifs/push/ropetricep.gif", "images/gifs/push/overheadtricep.gif"] 
             gif_index = 0
             image_frame_list_resized = load_gif_frames(gif_paths[gif_index])
             
             
-            # List of labels to be shown in sequence
+            #List of labels to be shown in sequence
             labels_to_show = [benchlogo_label, inclinelogo_label, shoulderpresslogo_label, laterallogo_label, ropetriceplogo_label, tricepoverheadlogo_label]  # Add more labels if needed
             info_to_show= [benchinfo_label, inclineinfo_label, shoulderpressinfo_label, lateralinfo_label, ropetricepinfo_label, tricepoverheadinfo_label]
-            current_label_index = 0  # Index to keep track of the currently displayed label
+            current_label_index = 0  #Index to keep track of the currently displayed label
             current_info_index = 0
 
 
-            # Function to handle the next button click
+            #Function to handle the next button click
             def show_next_label():
                 nonlocal current_label_index
                 nonlocal current_info_index
     
                 if current_label_index == len(labels_to_show) - 1:
-                    # If we reached the last label, do nothing and return
+                    #Reach last label return
                     return
 
                 current_label = labels_to_show[current_label_index]
                 current_info = info_to_show[current_info_index]
-                current_label.place_forget()  # Hide the previous label
+                current_label.place_forget()  #Hide the previous label
                 current_info.place_forget()
     
                 current_label_index += 1
                 current_info_index += 1
     
-                next_label = labels_to_show[current_label_index]  # Get the next label to show
+                next_label = labels_to_show[current_label_index]  #Get the next label to show
                 next_info = info_to_show[current_info_index]
-                next_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  # Show the next label
+                next_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  #Show the next label
                 next_info.place(relx=1, rely=0.5, anchor=tk.E)
                 
-           # Function to handle the previous button click
+           #Function to handle the previous button click
             def show_previous_label():
                 nonlocal current_label_index
                 nonlocal current_info_index
     
                 if current_label_index == 0:
-                    # If we reached the first label, do nothing and return
+                    #If we reached the first label, do nothing and return
                     return
     
                 current_label = labels_to_show[current_label_index]
                 current_info = info_to_show[current_info_index]
-                current_label.place_forget()  # Hide the current label
+                current_label.place_forget()  #Hide the current label
                 current_info.place_forget()
     
                 current_label_index -= 1
                 current_info_index -= 1
 
-                previous_label = labels_to_show[current_label_index]  # Get the previous label to show
+                previous_label = labels_to_show[current_label_index]  #Get the previous label to show
                 previous_info = info_to_show[current_info_index]
-                previous_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  # Show the previous label
+                previous_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  #Show the previous label
                 previous_info.place(relx=1, rely=0.5, anchor=tk.E)
                     
             #Load and resize the next image
@@ -364,16 +364,16 @@ def start():
             back_button.place(relx=0.05, rely=0.1, anchor=tk.SW)
     
            
-            # Function to load and prepare the GIF frames for animation
+            #Function to load and prepare the GIF frames for animation
             def load_gif_frames(gif_path):
                 frames = Image.open(gif_path)
                 original_width, original_height = frames.size
 
-                # Define the desired resized width and height
+                #Define the desired resized width and height
                 desired_width = 200
                 desired_height = 200
 
-                # Calculate the new width and height while maintaining the aspect ratio
+                #Calculate the new width and height while maintaining the aspect ratio
                 aspect_ratio = original_width / original_height
                 if original_width > original_height:
                     new_width = desired_width
@@ -382,7 +382,7 @@ def start():
                     new_height = desired_height
                     new_width = int(desired_height * aspect_ratio)
 
-                # Resize each frame of the GIF and store them in "image_frame_list_resized"
+                #Resize each frame of the GIF and store them in "image_frame_list_resized"
                 return [ImageTk.PhotoImage(frame.resize((new_width, new_height))) for frame in ImageSequence.Iterator(frames)]
 
     
@@ -394,13 +394,13 @@ def start():
                     #If gif_index is already at the last GIF, do nothing and return
                     return
 
-                gif_index += 1# Increment gif_index to display the next GIF
+                gif_index += 1#Increment gif_index to display the next GIF
                 gif_path = gif_paths[gif_index]
 
                 #Load and prepare the GIF frames for animation
                 image_frame_list_resized = load_gif_frames(gif_path)
 
-                #Reset the count and replay flag
+                #Reset the count
                 count = 0
                 replay = False
                 
@@ -417,21 +417,20 @@ def start():
                 #Load and prepare the GIF frames for animation
                 image_frame_list_resized = load_gif_frames(gif_path)
 
-                #Reset the count and replay flag
-                count = 0
+                #Reset the count
                 replay = False
 
                 
-            # Function to animate the resized frames of the GIF
+            #Function to animate the resized frames of the GIF
             def main_animation(count):
                 global image_frame_list_resized
                 im = image_frame_list_resized[count]
 
-                gif_label.configure(image=im)  # Updates the image displayed in the label "gif_label"
+                gif_label.configure(image=im)  #Updates the image displayed in the label "gif_label"
                 count += 1
 
-                if count < len(image_frame_list_resized):  # Check if there are more frames to display
-                    root.after(50, lambda: main_animation(count))  # Schedule the next frame update after 50 milliseconds
+                if count < len(image_frame_list_resized):  #Check if there are more frames to display
+                    root.after(50, lambda: main_animation(count))  #Schedule the next frame update after 50 milliseconds
 
             
             latpulldownlogo_image = Image.open("images/statements/pull/latpulldownlogo.png")
@@ -501,65 +500,65 @@ def start():
            
            
            
-            # Creates a label widget to display the animated GIF
+            #Creates a label widget to display the animated GIF
             gif_label = tk.Label(pull_page, image="")
             gif_label.place(relx=0.25, rely=0.38, anchor=tk.CENTER)
 
-            # Initialize the gif_index and load the first GIF
+            #Initialize the gif_index and load the first GIF
             gif_paths = ["images/gifs/pull/latpulldown.gif", "images/gifs/pull/row.gif", "images/gifs/pull/barbellcurl.gif", "images/gifs/pull/hammercurl.gif"]  # Add more paths as needed
             gif_index = 0
             image_frame_list_resized = load_gif_frames(gif_paths[gif_index])
             
             
             # List of labels to be shown in sequence
-            labels_to_show = [latpulldownlogo_label, rowlogo_label, barbelllogo_label, hammercurllogo_label]  # Add more labels if needed
+            labels_to_show = [latpulldownlogo_label, rowlogo_label, barbelllogo_label, hammercurllogo_label] 
             info_to_show= [latpulldowninfo_label, rowinfo_label, barbellinfo_label, hammercurlinfo_label]
-            current_label_index = 0  # Index to keep track of the currently displayed label
+            current_label_index = 0  #Index to keep track of the currently displayed label
             current_info_index = 0
 
 
-            # Function to handle the next button click
+            #Function to handle the next button click
             def show_next_label():
                 nonlocal current_label_index
                 nonlocal current_info_index
     
                 if current_label_index == len(labels_to_show) - 1:
-                    # If we reached the last label, do nothing and return
+                    #If we reached the last label, do nothing and return
                     return
 
                 current_label = labels_to_show[current_label_index]
                 current_info = info_to_show[current_info_index]
-                current_label.place_forget()  # Hide the previous label
+                current_label.place_forget()  #Hide the previous label
                 current_info.place_forget()
     
                 current_label_index += 1
                 current_info_index += 1
     
-                next_label = labels_to_show[current_label_index]  # Get the next label to show
+                next_label = labels_to_show[current_label_index]  #Get the next label to show
                 next_info = info_to_show[current_info_index]
-                next_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  # Show the next label
+                next_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  #Show the next label
                 next_info.place(relx=1, rely=0.5, anchor=tk.E)
                 
-           # Function to handle the previous button click
+           #Function to handle the previous button click
             def show_previous_label():
                 nonlocal current_label_index
                 nonlocal current_info_index
     
                 if current_label_index == 0:
-                    # If we reached the first label, do nothing and return
+                    #If we reached the first label, do nothing and return
                     return
     
                 current_label = labels_to_show[current_label_index]
                 current_info = info_to_show[current_info_index]
-                current_label.place_forget()  # Hide the current label
+                current_label.place_forget()  #Hide the current label
                 current_info.place_forget()
     
                 current_label_index -= 1
                 current_info_index -= 1
 
-                previous_label = labels_to_show[current_label_index]  # Get the previous label to show
+                previous_label = labels_to_show[current_label_index]  #Get the previous label to show
                 previous_info = info_to_show[current_info_index]
-                previous_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  # Show the previous label
+                previous_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  #Show the previous label
                 previous_info.place(relx=1, rely=0.5, anchor=tk.E)
                     
             #Load and resize the next image
@@ -614,16 +613,16 @@ def start():
             back_button.place(relx=0.05, rely=0.1, anchor=tk.SW)
     
            
-            # Function to load and prepare the GIF frames for animation
+            #Function to load and prepare the GIF frames for animation
             def load_gif_frames(gif_path):
                 frames = Image.open(gif_path)
                 original_width, original_height = frames.size
 
-                # Define the desired resized width and height
+                #Define the desired resized width and height
                 desired_width = 200
                 desired_height = 200
 
-                # Calculate the new width and height while maintaining the aspect ratio
+                #Calculate the new width and height while maintaining the aspect ratio
                 aspect_ratio = original_width / original_height
                 if original_width > original_height:
                     new_width = desired_width
@@ -632,7 +631,7 @@ def start():
                     new_height = desired_height
                     new_width = int(desired_height * aspect_ratio)
 
-                # Resize each frame of the GIF and store them in "image_frame_list_resized"
+                #Resize each frame of the GIF and store them in "image_frame_list_resized"
                 return [ImageTk.PhotoImage(frame.resize((new_width, new_height))) for frame in ImageSequence.Iterator(frames)]
 
     
@@ -672,16 +671,16 @@ def start():
                 replay = False
 
                 
-            # Function to animate the resized frames of the GIF
+            #Function to animate the resized frames of the GIF
             def main_animation(count):
                 global image_frame_list_resized
                 im = image_frame_list_resized[count]
 
-                gif_label.configure(image=im)  # Updates the image displayed in the label "gif_label"
+                gif_label.configure(image=im)  #Updates the image displayed in the label "gif_label"
                 count += 1
 
-                if count < len(image_frame_list_resized):  # Check if there are more frames to display
-                    root.after(50, lambda: main_animation(count))  # Schedule the next frame update after 50 milliseconds
+                if count < len(image_frame_list_resized):  #Check if there are more frames to display
+                    root.after(50, lambda: main_animation(count))  #Schedule the next frame update after 50 milliseconds
 
             
             hacksquatlogo_image = Image.open("images/statements/legs/hacksquatlogo.png")
@@ -737,65 +736,65 @@ def start():
                 
                 
             
-           # Creates a label widget to display the animated GIF
+           #Creates a label widget to display the animated GIF
             gif_label = tk.Label(legs_page, image="")
             gif_label.place(relx=0.25, rely=0.38, anchor=tk.CENTER)
 
-            # Initialize the gif_index and load the first GIF
-            gif_paths = ["images/gifs/legs/hacksquat.gif", "images/gifs/legs/legcurl.gif", "images/gifs/legs/calfraises.gif"]  # Add more paths as needed
+            #Initialize the gif_index and load the first GIF
+            gif_paths = ["images/gifs/legs/hacksquat.gif", "images/gifs/legs/legcurl.gif", "images/gifs/legs/calfraises.gif"]
             gif_index = 0
             image_frame_list_resized = load_gif_frames(gif_paths[gif_index])
             
             
             # List of labels to be shown in sequence
-            labels_to_show = [hacksquatlogo_label, legcurllogo_label, calfraiselogo_label]  # Add more labels if needed
+            labels_to_show = [hacksquatlogo_label, legcurllogo_label, calfraiselogo_label]
             info_to_show= [hacksquatinfo_label, legcurlinfo_label, calfraiseinfo_label]
-            current_label_index = 0  # Index to keep track of the currently displayed label
+            current_label_index = 0  #Index to keep track of the currently displayed label
             current_info_index = 0
 
 
-            # Function to handle the next button click
+            #Function to handle the next button click
             def show_next_label():
                 nonlocal current_label_index
                 nonlocal current_info_index
     
                 if current_label_index == len(labels_to_show) - 1:
-                    # If we reached the last label, do nothing and return
+                    #If we reached the last label, do nothing and return
                     return
 
                 current_label = labels_to_show[current_label_index]
                 current_info = info_to_show[current_info_index]
-                current_label.place_forget()  # Hide the previous label
+                current_label.place_forget()  #Hide the previous label
                 current_info.place_forget()
     
                 current_label_index += 1
                 current_info_index += 1
     
-                next_label = labels_to_show[current_label_index]  # Get the next label to show
+                next_label = labels_to_show[current_label_index]  #Get the next label to show
                 next_info = info_to_show[current_info_index]
-                next_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  # Show the next label
+                next_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  #Show the next label
                 next_info.place(relx=1, rely=0.5, anchor=tk.E)
                 
-           # Function to handle the previous button click
+           #Function to handle the previous button click
             def show_previous_label():
                 nonlocal current_label_index
                 nonlocal current_info_index
     
                 if current_label_index == 0:
-                    # If we reached the first label, do nothing and return
+                    #If we reached the first label, do nothing and return
                     return
     
                 current_label = labels_to_show[current_label_index]
                 current_info = info_to_show[current_info_index]
-                current_label.place_forget()  # Hide the current label
+                current_label.place_forget()  #Hide the current label
                 current_info.place_forget()
     
                 current_label_index -= 1
                 current_info_index -= 1
 
-                previous_label = labels_to_show[current_label_index]  # Get the previous label to show
+                previous_label = labels_to_show[current_label_index]  #Get the previous label to show
                 previous_info = info_to_show[current_info_index]
-                previous_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  # Show the previous label
+                previous_label.place(relx=0.5, rely=0.1, anchor=tk.CENTER)  #Show the previous label
                 previous_info.place(relx=1, rely=0.5, anchor=tk.E)
                     
             #Load and resize the next image
@@ -862,12 +861,12 @@ def start():
         pull_button.image = pull_photo
         pull_button.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
         
-        # Load and resize the legs2 image
+        #Load and resize the legs2 image
         pull2_image = Image.open("images/statements/pull2.png")
         pull2_image = pull2_image.resize((100, 50))
         pull2_photo = ImageTk.PhotoImage(pull2_image)
 
-        # Creates an label image
+        #Creates an label image
         pull2_label = tk.Label(main_page, image=pull2_photo, bg="#F1EFE7")
         pull2_label.image = pull2_photo
         pull2_label.place(relx=0.5, rely=0.195, anchor=tk.CENTER)
@@ -882,12 +881,12 @@ def start():
         legs_button.image = legs_photo
         legs_button.place(relx=0.95, rely=0.04, anchor=tk.NE)
         
-        # Load and resize the legs2 image
+        #Load and resize the legs2 image
         legs2_image = Image.open("images/statements/legs2.png")
         legs2_image = legs2_image.resize((120, 70))
         legs2_photo = ImageTk.PhotoImage(legs2_image)
 
-        # Creates an label image
+        #Creates an label image
         legs2_label = tk.Label(main_page, image=legs2_photo, bg="#F1EFE7")
         legs2_label.image = legs2_photo
         legs2_label.place(relx=0.95, rely=0.215, anchor=tk.E)
@@ -908,22 +907,22 @@ def start():
         
         
 
-    # Load and resize the intro image
+    #Load and resize the intro image
     intro_image = Image.open("images/statements/intro.png")
-    intro_image = intro_image.resize((300, 30))  # Resizes the image
-    intro_photo = ImageTk.PhotoImage(intro_image)  # Creates a PhotoImage object from the resized image
+    intro_image = intro_image.resize((300, 30))  #Resizes the image
+    intro_photo = ImageTk.PhotoImage(intro_image)  #Creates a PhotoImage object from the resized image
 
-    # Creates a label widget for the intro image and centers it at the top of the window
+    #Creates a label widget for the intro image and centers it at the top of the window
     intro_label = tk.Label(intro_page, image=intro_photo, bg="#F1EFE7")
-    intro_label.image = intro_photo  # Store the PhotoImage object as an attribute of the label
+    intro_label.image = intro_photo  #Store the PhotoImage object as an attribute of the label
     intro_label.place(relx=0.5, rely=0.05, anchor=tk.CENTER)
 
-    # Load and resize the welcoming image
+    #Load and resize the welcoming image
     welcome_image = Image.open("images/statements/welcoming.png")
     welcome_image = welcome_image.resize((400, 400))
     welcome_photo = ImageTk.PhotoImage(welcome_image)
 
-    # Creates an image that is the welcoming body text
+    #Creates an image that is the welcoming body text
     welcome_label = tk.Label(intro_page, image=welcome_photo, bg="#F1EFE7")
     welcome_label.image = welcome_photo
 
@@ -932,7 +931,7 @@ def start():
     hypertrophy_image = hypertrophy_image.resize((400, 400))
     hypertrophy_photo = ImageTk.PhotoImage(hypertrophy_image)
 
-    # Creates an image that is the definition of hypertrophy
+    #Creates an image that is the definition of hypertrophy
     hypertrophy_label = tk.Label(intro_page, image=hypertrophy_photo, bg="#F1EFE7")
     hypertrophy_label.image = hypertrophy_photo
     
@@ -941,7 +940,7 @@ def start():
     definition_image = definition_image.resize((400, 400))
     definition_photo = ImageTk.PhotoImage(definition_image)
 
-    # Creates an image that is the definition
+    #Creates an image that is the definition
     definition_label = tk.Label(intro_page, image=definition_photo, bg="#F1EFE7")
     definition_label.image = definition_photo
     
@@ -950,7 +949,7 @@ def start():
     muscle_image = muscle_image.resize((400, 430))
     muscle_photo = ImageTk.PhotoImage(muscle_image)
 
-    # Creates an image that is the muscle building image
+    #Creates an image that is the muscle building image
     muscle_label = tk.Label(intro_page, image=muscle_photo, bg="#F1EFE7")
     muscle_label.image = muscle_photo
 
@@ -959,7 +958,7 @@ def start():
     muscle1_image = muscle1_image.resize((400, 430))
     muscle1_photo = ImageTk.PhotoImage(muscle1_image)
     
-    # Creates an image that is the muscle building image
+    #Creates an image that is the muscle building image
     muscle1_label = tk.Label(intro_page, image=muscle1_photo, bg="#F1EFE7")
     muscle1_label.image = muscle1_photo
     
@@ -968,7 +967,7 @@ def start():
     training_image = training_image.resize((400, 430))
     training_photo = ImageTk.PhotoImage(training_image)
     
-    # Creates an image that is the explanation of training optimally
+    #Creates an image that is the explanation of training optimally
     training_label = tk.Label(intro_page, image=training_photo, bg="#F1EFE7")
     training_label.image = training_photo
     
@@ -977,7 +976,7 @@ def start():
     training1_image = training1_image.resize((400, 430))
     training1_photo = ImageTk.PhotoImage(training1_image)
     
-    # Creates an image that is the explanation of training optimally
+    #Creates an image that is the explanation of training optimally
     training1_label = tk.Label(intro_page, image=training1_photo, bg="#F1EFE7")
     training1_label.image = training1_photo
     
@@ -986,36 +985,36 @@ def start():
     closing_image = closing_image.resize((400, 400))
     closing_photo = ImageTk.PhotoImage(closing_image)
     
-    # Creates an image that is the closing statement
+    #Creates an image that is the closing statement
     closing_label = tk.Label(intro_page, image=closing_photo, bg="#F1EFE7")
     closing_label.image = closing_photo
 
 
-    # List of labels to be shown in sequence
-    labels_to_show = [intro_label, welcome_label, hypertrophy_label, definition_label, muscle_label, muscle1_label, training_label, training1_label, closing_label]  # Add more labels if needed
+    #List of labels to be shown in sequence
+    labels_to_show = [intro_label, welcome_label, hypertrophy_label, definition_label, muscle_label, muscle1_label, training_label, training1_label, closing_label]
     current_label_index = 0  # Index to keep track of the currently displayed label
 
-    # Function to handle the next button click
+    #Function to handle the next button click
     def show_next_label():
         nonlocal current_label_index
         current_label = labels_to_show[current_label_index]
-        current_label.pack_forget()  # Hide the previous label
+        current_label.pack_forget()  #Hide the previous label
         current_label_index += 1
         if current_label_index >= len(labels_to_show):
             current_label_index = 0
-        next_label = labels_to_show[current_label_index]  # Get the next label to show
-        next_label.pack()  # Show the next label
+        next_label = labels_to_show[current_label_index]  #Get the next label to show
+        next_label.pack()  #Show the next label
             
-    # Function to handle the previous button click
+    #Function to handle the previous button click
     def show_previous_label():
         nonlocal current_label_index
         current_label = labels_to_show[current_label_index]
-        current_label.pack_forget()  # Hide the current label
+        current_label.pack_forget()  #Hide the current label
         current_label_index -= 1
         if current_label_index < 0:
             current_label_index = len(labels_to_show) - 1
-        previous_label = labels_to_show[current_label_index]  # Get the previous label to show
-        previous_label.pack()  # Show the previous label
+        previous_label = labels_to_show[current_label_index]  #Get the previous label to show
+        previous_label.pack()  #Show the previous label
 
     #Load and resize the back image
     back_image = Image.open("images/buttons/back.png")
