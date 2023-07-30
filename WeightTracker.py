@@ -41,8 +41,10 @@ class WeightLossTrackerApp:
         try:
             weight = float(weight)
             bmi = float(bmi)
-        except ValueError:
-            messagebox.showerror("Invalid Input", "Please enter valid weight and BMI values.")
+            if weight < 0 or bmi < 0:
+                raise ValueError("Weight and BMI values must be non-negative.")
+        except ValueError as e:
+            messagebox.showerror("Invalid Input", str(e))
             return
 
         #Append data to the CSV file

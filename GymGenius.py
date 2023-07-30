@@ -60,7 +60,7 @@ def start():
     intro_label.place(relx=0.5, rely=0.05, anchor=tk.CENTER)
 
     #Load and resize the welcoming image
-    welcome_image = Image.open("images/statements/welcoming.png")
+    welcome_image = Image.open("images/statements/welcoming1.png")
     welcome_image = welcome_image.resize((400, 400))
     welcome_photo = ImageTk.PhotoImage(welcome_image)
 
